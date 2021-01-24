@@ -1,0 +1,93 @@
+<app-menu></app-menu>
+<div class="row">
+  <div class="col-lg-6">
+    <h1 class="text-center">Create sprint</h1>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group">
+          <div class="form-group">
+            <label for="startDate">Start date of sprint :</label>
+            <input type="text" class="form-control"
+                   id="startDate"
+                   [(ngModel)]="agileSprint.startDate"
+                   placeholder="Enter Start date"
+                   name="startDate">
+          </div>
+          <div class="form-group">
+            <label for="endDate">End date of sprint:</label>
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="agileSprint.endDate"
+                   id="endDate"
+                   placeholder="Enter end date"
+                   name="endDate">
+          </div>
+          <div class="form-group">
+            <label>Agile story ids:</label>
+            <div>
+              {{agileSprint.storyIds.toString()}}
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info" (click)="saveAgileSprint()">Save sprint</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <form class="form-group">
+      <input type="text" (keyup)="searchAgileStoriesByName($event)"
+              class="form-control mt-5"
+              placeholder="Search  stories by name">
+    </form>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Story points
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agileStory of agileStories | async">
+            <td>
+              {{agileStory.id}}
+            </td>
+            <td>
+              {{agileStory.name}}
+            </td>
+            <td>
+              {{agileStory.storyPoints}}
+            </td>
+            <td *ngIf="!agileSprint.storyIds.includes(agileStory.id); else remove_story">
+              <button
+                type="submit"
+                class="btn btn-success btn-sm"
+                (click)="assignStory(agileStory.id)">Assign story</button>
+            </td>
+            <ng-template #remove_story>
+              <td>
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm"
+                  (click)="removeStory(agileStory.id)">
+                  Remove Story
+                </button>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

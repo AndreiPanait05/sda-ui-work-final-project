@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Sprint overview</h2>
+  </div>
+  <a class="btn btn-info m-4" href="/create-agile-sprints/{{projectId}}">Add new sprint</a>
+  <button class="btn btn-info m-4" (click)="createStoryModal()">Create story</button>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>
+          Sprint id
+        </th>
+        <th>
+          Sprint start date
+        </th>
+        <th>
+          Sprint end date
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let agileSprint of agileSprints | async">
+        <td>{{agileSprint.id}}</td>
+        <td>{{agileSprint.startDate}}</td>
+        <td>{{agileSprint.endDate}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

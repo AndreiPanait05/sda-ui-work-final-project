@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Product Backlog</h2>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>
+          Story name
+        </th>
+        <th>
+          Assigned user
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let agileStory of agileStories | async">
+        <td>{{agileStory.name}}</td>
+        <td>{{agileStory.userInfo.name}}</td>
+        <td>{{agileStory.status}}</td>
+        <button class="btn btn-info btn-sm" (click)="edit(agileStory.id)"> Edit </button>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

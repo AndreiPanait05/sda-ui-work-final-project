@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<div class="container col-lg-6">
+  <h1 class="text-center">Register</h1>
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group">
+        <div class="form-group">
+          <label for="username">User Name :</label>
+          <input type="text" class="form-control"
+                 id="username"
+                 [(ngModel)]="user.username"
+                 placeholder="Enter User Name"
+                 name="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password"
+                 class="form-control"
+                 [(ngModel)]="user.password"
+                 id="password"
+                 placeholder="Enter password"
+                 name="password">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control"
+                 [(ngModel)]="user.email"
+                 id="email"
+                 placeholder="Enter password"
+                 name="email">
+        </div>
+        <div class="form-group">
+          <label for="user-type">Roles</label>
+          <select class="form-control" id="user-type" name="user-type" required [(ngModel)]="user.userType">
+            <option *ngFor="let uT of userTypes" [ngValue]="uT">{{uT}}</option>
+          </select>
+        </div>
+        <button type="submit" (click)="save()" class="btn btn-info ">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

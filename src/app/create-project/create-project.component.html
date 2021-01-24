@@ -1,0 +1,20 @@
+<div class="container col-lg-6">
+  <h1 class="text-center">Create project</h1>
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group">
+        <div class="form-group">
+          <label for="name"><b>Name</b></label>
+          <input class="form-control" type="text" placeholder="Enter name" name="name" id="name" required [(ngModel)]="project.name">
+
+        </div>
+        <div class="form-group">
+          <label for="description"><b>Description</b></label>
+          <input class="form-control" type="text" placeholder="Description" name="description" id="description" required [(ngModel)]="project.description">
+
+        </div>
+        <button type="submit" (click)="save()" class="btn btn-success">Save Project</button>
+      </form>
+    </div>
+  </div>
+</div>
