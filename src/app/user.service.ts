@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  baseUrl = 'https://project-management-sda-api.herokuapp.com/users';
+  baseUrl = 'http://localhost:8081/users';
   constructor(private http: HttpClient) {
 
   }

@@ -6,10 +6,13 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  set baseUrl(value: string) {
+    this._baseUrl = value;
+  }
 
   public static AUTHENTICATED_USER = 'authenticatedUser';
   public static BASIC_AUTH_FLAG_B64 = 'basicAuthFlag';
-  baseUrl = 'http://localhost:8081/users';
+  private _baseUrl = 'http://localhost:8081/users';
 
 
   public username: string;
@@ -19,7 +22,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticationService(username: string, password: string) {
-    return this.http.get(`${this.baseUrl}/logged-user`, {
+    return this.http.get(`${this._baseUrl}/logged-user`, {
       headers : {
         Authorization: this.createAuthorizationHeader(username, password)
       }

@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class AgileSprintsService {
 
-  baseUrl = 'https://project-management-sda-api.herokuapp.com/agile-sprints';
+  baseUrl = 'http://localhost:8081/agile-sprints';
 
   constructor(private http: HttpClient) { }
 
